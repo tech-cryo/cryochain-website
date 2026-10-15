@@ -20,8 +20,11 @@ You need two free accounts: **GitHub** (stores the site and the articles) and **
 ### 2. Host it on Netlify
 1. Sign in to netlify.com with your GitHub account.
 2. Choose **Add new site**, then **Import an existing project**, then GitHub, then `cryochain-site`.
-3. Netlify reads the build settings from `netlify.toml` by itself. Click **Deploy**.
+3. If the repository holds the `cryochain-site` folder rather than its contents, set **Base directory** to `cryochain-site`. Netlify then reads the build settings from `netlify.toml` by itself. Click **Deploy**.
 4. Add your domain under **Domain management** and follow Netlify's steps to point cryochain.co at it.
+
+### 2b. Activate the form emails
+Forms are delivered with FormSubmit. General forms go to `fresh@cryochain.co`; the investor enquiry form, and any form where someone picks "Partner or investor", go to `ir@cryochain.co`. After deploying, send one test form for each address and click the confirmation link FormSubmit emails to `fresh@cryochain.co` and `ir@cryochain.co`. Until then forms fall back to WhatsApp.
 
 ### 3. Turn on admin logins
 1. In GitHub, go to **Settings**, **Developer settings**, **OAuth Apps**, **New OAuth App**.

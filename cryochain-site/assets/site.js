@@ -3,8 +3,9 @@
 var CONFIG = {
   appStoreUrl: "",      // paste the Apple App Store link when the app is live
   playStoreUrl: "",     // paste the Google Play link when the app is live
-  formEmail: "fresh@cryochain.co",   // every form is delivered here
-  formEndpoint: "https://formsubmit.co/ajax/fresh@cryochain.co",   // FormSubmit forwards each form to formEmail. After activating, you can swap the address in this link for the private code FormSubmit sends you
+  formEmail: "fresh@cryochain.co",   // every form is delivered here, except investor and partner enquiries
+  investorEmail: "ir@cryochain.co",   // investor and partner enquiries (investor page form, or "Partner or investor" chosen in any form)
+  formEndpoint: "https://formsubmit.co/ajax/",   // FormSubmit forwards each form to the address added to this link. Each address must be activated once from FormSubmit's confirmation email
   whatsapp: "12028789298",   // digits only, with country code
   ghanaPhone: "",       // Ghana phone number shown on the contact pages
   launchDate: "November 1, 2026",
@@ -147,7 +148,8 @@ var CONFIG = {
         var who = data.get("Business name") || data.get("Company name") || data.get("Full name") || "";
         var body = { _subject: "CryoChain website: " + label + (who ? " from " + who : ""), _template: "table", _captcha: "false", Form: label };
         lines.forEach(function (l) { var i = l.indexOf(": "); body[l.slice(0, i)] = l.slice(i + 2); });
-        fetch(CONFIG.formEndpoint, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(body) })
+        var investor = form.getAttribute("data-to") === "investors" || data.get("I am a") === "Partner or investor";
+        fetch(CONFIG.formEndpoint + (investor ? CONFIG.investorEmail : CONFIG.formEmail), { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(body) })
           .then(function (r) {
             if (!r.ok) throw new Error("bad");
             say("Thank you. We received your details and will contact you soon."); form.reset();

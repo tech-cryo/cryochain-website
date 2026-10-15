@@ -20,7 +20,7 @@ const ROOT = process.cwd();
 const OUT = path.join(ROOT, "dist");
 const SITE = (process.env.SITE_URL || "https://www.cryochain.co").replace(/\/$/, "");
 const NOW = new Date();
-const SKIP = new Set(["dist", "node_modules", "content", "scripts", ".git", ".github", ".netlify",
+const SKIP = new Set(["dist", "netlify", "node_modules", "content", "scripts", ".git", ".github", ".netlify",
   "package.json", "package-lock.json", "netlify.toml", "insights-post-template.html"]);
 
 const esc = (s = "") => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
