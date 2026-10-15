@@ -1,7 +1,7 @@
 # CryoChain Insights admin. See ADMIN_SETUP.md for the one time setup.
 backend:
   name: github
-  repo: YOUR-GITHUB-ACCOUNT/cryochain-site   # change to your GitHub account and repository name
+  repo: tech-cryo/cryochain # change to your GitHub account and repository name
   branch: main
   commit_messages:
     create: "Insights: add {{collection}} {{slug}}"
@@ -48,7 +48,10 @@ collections:
       - label: Web address
         name: slug
         widget: string
-        pattern: ["^[a-z0-9]+(-[a-z0-9]+)*$", "Use lowercase words joined by hyphens, for example caterer-checklist"]
+        pattern: [
+          "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "Use lowercase words joined by hyphens, for example caterer-checklist",
+        ]
         hint: "The page will be cryochain.co/insights-<this>.html. Keep it short. Do not change it after publishing."
       - label: Publish date and time
         name: date
@@ -74,15 +77,76 @@ collections:
           - { label: "UAE (Dubai)", value: "Asia/Dubai" }
           - { label: "China (Shanghai)", value: "Asia/Shanghai" }
           - { label: "UTC", value: "UTC" }
-      - { label: Last updated, name: updated, widget: datetime, format: "YYYY-MM-DD HH:mm", date_format: "D MMM YYYY", time_format: "HH:mm", picker_utc: false, required: false, hint: "Only fill in if you change a published article. Uses the same time zone as the publish time." }
-      - { label: Topic, name: category, widget: relation, collection: categories, value_field: slug, search_fields: [name], display_fields: [name] }
-      - { label: Author, name: author, widget: relation, collection: authors, value_field: slug, search_fields: [name], display_fields: [name], default: cryochain-team }
-      - { label: Tags, name: tags, widget: list, required: false, hint: "Short words separated by commas, used by search and related articles." }
-      - { label: Summary, name: excerpt, widget: text, hint: "One or two sentences shown on cards, in search and when shared." }
-      - { label: Main image, name: image, widget: image, choose_url: false, hint: "Any landscape photo, at least 1600 pixels wide. The site crops it to every size for you." }
-      - { label: Image focus point, name: focus, widget: focalpoint, image_field: image, default: "50,50", required: false }
-      - { label: Image description, name: image_alt, widget: string, hint: "Describe the photo in a few words for people using screen readers." }
-      - { label: Image caption, name: image_caption, widget: string, required: false }
+      - {
+          label: Last updated,
+          name: updated,
+          widget: datetime,
+          format: "YYYY-MM-DD HH:mm",
+          date_format: "D MMM YYYY",
+          time_format: "HH:mm",
+          picker_utc: false,
+          required: false,
+          hint: "Only fill in if you change a published article. Uses the same time zone as the publish time.",
+        }
+      - {
+          label: Topic,
+          name: category,
+          widget: relation,
+          collection: categories,
+          value_field: slug,
+          search_fields: [name],
+          display_fields: [name],
+        }
+      - {
+          label: Author,
+          name: author,
+          widget: relation,
+          collection: authors,
+          value_field: slug,
+          search_fields: [name],
+          display_fields: [name],
+          default: cryochain-team,
+        }
+      - {
+          label: Tags,
+          name: tags,
+          widget: list,
+          required: false,
+          hint: "Short words separated by commas, used by search and related articles.",
+        }
+      - {
+          label: Summary,
+          name: excerpt,
+          widget: text,
+          hint: "One or two sentences shown on cards, in search and when shared.",
+        }
+      - {
+          label: Main image,
+          name: image,
+          widget: image,
+          choose_url: false,
+          hint: "Any landscape photo, at least 1600 pixels wide. The site crops it to every size for you.",
+        }
+      - {
+          label: Image focus point,
+          name: focus,
+          widget: focalpoint,
+          image_field: image,
+          default: "50,50",
+          required: false,
+        }
+      - {
+          label: Image description,
+          name: image_alt,
+          widget: string,
+          hint: "Describe the photo in a few words for people using screen readers.",
+        }
+      - {
+          label: Image caption,
+          name: image_caption,
+          widget: string,
+          required: false,
+        }
       - label: Video
         name: video
         widget: object
@@ -95,7 +159,10 @@ collections:
             name: url
             widget: string
             required: false
-            pattern: ["^$|^(https?://)?(www\\.|m\\.)?(youtube\\.com/(watch\\?(.*&)?v=|shorts/|embed/|live/)|youtu\\.be/)[A-Za-z0-9_-]{11}", "Paste a YouTube link, for example https://www.youtube.com/watch?v=abc123DEF45"]
+            pattern: [
+              "^$|^(https?://)?(www\\.|m\\.)?(youtube\\.com/(watch\\?(.*&)?v=|shorts/|embed/|live/)|youtu\\.be/)[A-Za-z0-9_-]{11}",
+              "Paste a YouTube link, for example https://www.youtube.com/watch?v=abc123DEF45",
+            ]
           - label: Where to show it
             name: position
             widget: select
@@ -103,11 +170,40 @@ collections:
             options:
               - { label: "In place of the banner photo", value: banner }
               - { label: "Just below the banner photo", value: below }
-          - { label: Video title, name: title, widget: string, required: false, hint: "Shown on the video and read out by screen readers. Leave empty to use the article title." }
+          - {
+              label: Video title,
+              name: title,
+              widget: string,
+              required: false,
+              hint: "Shown on the video and read out by screen readers. Leave empty to use the article title.",
+            }
           - { label: Caption, name: caption, widget: string, required: false }
-          - { label: Start playing at (seconds), name: start, widget: number, value_type: int, min: 0, default: 0, required: false }
-          - { label: Hover preview starts at (seconds), name: preview_start, widget: number, value_type: int, min: 0, default: 0, required: false, hint: "Pick a lively moment. The preview plays silently for a few seconds from here." }
-      - { label: Article, name: body, widget: markdown, required: false, hint: "Use Heading 2 for sections. A quote block shows as a large pull quote. To add a video inside the article, paste a YouTube link on its own line." }
+          - {
+              label: Start playing at (seconds),
+              name: start,
+              widget: number,
+              value_type: int,
+              min: 0,
+              default: 0,
+              required: false,
+            }
+          - {
+              label: Hover preview starts at (seconds),
+              name: preview_start,
+              widget: number,
+              value_type: int,
+              min: 0,
+              default: 0,
+              required: false,
+              hint: "Pick a lively moment. The preview plays silently for a few seconds from here.",
+            }
+      - {
+          label: Article,
+          name: body,
+          widget: markdown,
+          required: false,
+          hint: "Use Heading 2 for sections. A quote block shows as a large pull quote. To add a video inside the article, paste a YouTube link on its own line.",
+        }
       - label: Ending buttons
         name: cta
         widget: select
@@ -118,7 +214,13 @@ collections:
           - { label: "Buyers only", value: buyers }
           - { label: "Cold trucks only", value: trucks }
           - { label: "None", value: none }
-      - { label: Show as a Coming soon card, name: coming_soon, widget: boolean, default: false, hint: "Shows the card with no link until the article is ready." }
+      - {
+          label: Show as a Coming soon card,
+          name: coming_soon,
+          widget: boolean,
+          default: false,
+          hint: "Shows the card with no link until the article is ready.",
+        }
       - { label: Hide from site, name: draft, widget: boolean, default: false }
       - label: Search and social sharing
         name: seo
@@ -126,8 +228,20 @@ collections:
         collapsed: true
         required: false
         fields:
-          - { label: Search title, name: title, widget: string, required: false, hint: "Leave empty to use the article title." }
-          - { label: Search description, name: description, widget: text, required: false, hint: "Leave empty to use the summary." }
+          - {
+              label: Search title,
+              name: title,
+              widget: string,
+              required: false,
+              hint: "Leave empty to use the article title.",
+            }
+          - {
+              label: Search description,
+              name: description,
+              widget: text,
+              required: false,
+              hint: "Leave empty to use the summary.",
+            }
 
   - name: categories
     label: Topics
@@ -139,14 +253,33 @@ collections:
     slug: "{{fields.slug}}"
     fields:
       - { label: Name, name: name, widget: string }
-      - { label: Web name, name: slug, widget: string, pattern: ["^[a-z0-9]+(-[a-z0-9]+)*$", "Lowercase words joined by hyphens"] }
-      - { label: Description, name: description, widget: string, required: false }
+      - {
+          label: Web name,
+          name: slug,
+          widget: string,
+          pattern: [
+            "^[a-z0-9]+(-[a-z0-9]+)*$",
+            "Lowercase words joined by hyphens",
+          ],
+        }
+      - {
+          label: Description,
+          name: description,
+          widget: string,
+          required: false,
+        }
       - label: Tag color
         name: color
         widget: select
         default: blue
         options: [green, blue, teal, orange, purple]
-      - { label: Order in the filter bar, name: order, widget: number, default: 10, value_type: int }
+      - {
+          label: Order in the filter bar,
+          name: order,
+          widget: number,
+          default: 10,
+          value_type: int,
+        }
 
   - name: authors
     label: Authors
@@ -158,9 +291,23 @@ collections:
     slug: "{{fields.slug}}"
     fields:
       - { label: Name, name: name, widget: string }
-      - { label: Web name, name: slug, widget: string, pattern: ["^[a-z0-9]+(-[a-z0-9]+)*$", "Lowercase words joined by hyphens"] }
+      - {
+          label: Web name,
+          name: slug,
+          widget: string,
+          pattern: [
+            "^[a-z0-9]+(-[a-z0-9]+)*$",
+            "Lowercase words joined by hyphens",
+          ],
+        }
       - { label: Role, name: role, widget: string, required: false }
-      - { label: Photo, name: photo, widget: image, required: false, choose_url: false }
+      - {
+          label: Photo,
+          name: photo,
+          widget: image,
+          required: false,
+          choose_url: false,
+        }
       - { label: Short bio, name: bio, widget: text, required: false }
 
   - name: settings
@@ -192,14 +339,39 @@ collections:
               - { label: "Netherlands (Amsterdam)", value: "Europe/Amsterdam" }
               - { label: "US Eastern (New York)", value: "America/New_York" }
               - { label: "US Central (Chicago)", value: "America/Chicago" }
-              - { label: "US Pacific (Los Angeles)", value: "America/Los_Angeles" }
+              - {
+                  label: "US Pacific (Los Angeles)",
+                  value: "America/Los_Angeles",
+                }
               - { label: "UAE (Dubai)", value: "Asia/Dubai" }
               - { label: "China (Shanghai)", value: "Asia/Shanghai" }
               - { label: "UTC", value: "UTC" }
-          - { label: Home page heading, name: home_title, widget: string, default: "Latest from Insights" }
-          - { label: Insights page heading, name: page_title, widget: string, default: "Insights from the cold chain." }
-          - { label: Insights page introduction, name: page_intro, widget: text }
-          - { label: Articles shown before Load more, name: posts_per_page, widget: number, default: 9, value_type: int, min: 3, max: 30 }
+          - {
+              label: Home page heading,
+              name: home_title,
+              widget: string,
+              default: "Latest from Insights",
+            }
+          - {
+              label: Insights page heading,
+              name: page_title,
+              widget: string,
+              default: "Insights from the cold chain.",
+            }
+          - {
+              label: Insights page introduction,
+              name: page_intro,
+              widget: text,
+            }
+          - {
+              label: Articles shown before Load more,
+              name: posts_per_page,
+              widget: number,
+              default: 9,
+              value_type: int,
+              min: 3,
+              max: 30,
+            }
       - label: Site settings
         name: site
         file: content/settings/site.json
@@ -208,19 +380,60 @@ collections:
             name: analytics
             widget: object
             fields:
-              - { label: Turn on Google Analytics, name: enabled, widget: boolean, default: true, hint: "Analytics only runs for visitors who accept analytics cookies in the cookie notice." }
+              - {
+                  label: Turn on Google Analytics,
+                  name: enabled,
+                  widget: boolean,
+                  default: true,
+                  hint: "Analytics only runs for visitors who accept analytics cookies in the cookie notice.",
+                }
               - label: Measurement ID
                 name: measurement_id
                 widget: string
                 required: false
-                pattern: ["^(G-[A-Z0-9]+)?$", "Starts with G- followed by capital letters and numbers, for example G-AB12CD34EF"]
+                pattern: [
+                  "^(G-[A-Z0-9]+)?$",
+                  "Starts with G- followed by capital letters and numbers, for example G-AB12CD34EF",
+                ]
                 hint: "In Google Analytics: Admin, Data streams, choose the web stream, then copy the Measurement ID. Leave empty to switch analytics off."
-              - { label: Track key actions, name: track_events, widget: boolean, default: true, hint: "Form sign ups, WhatsApp clicks, app store clicks, Book a call clicks, article shares, article opens, topic filters and video plays." }
+              - {
+                  label: Track key actions,
+                  name: track_events,
+                  widget: boolean,
+                  default: true,
+                  hint: "Form sign ups, WhatsApp clicks, app store clicks, Book a call clicks, article shares, article opens, topic filters and video plays.",
+                }
           - label: Videos
             name: video
             widget: object
             fields:
-              - { label: Hover previews, name: hover_previews, widget: boolean, default: true, hint: "Play a few silent seconds when someone points at a video card. Only for visitors who allow videos in Cookie settings, and never on phones." }
-              - { label: Preview length (seconds), name: preview_seconds, widget: number, value_type: int, min: 2, max: 15, default: 6 }
-              - { label: Hide YouTube's suggested videos, name: hide_suggestions, widget: boolean, default: true, hint: "When a video ends or is paused, cover YouTube's suggested videos with a CryoChain screen. Previews always stop before the end, so they never show suggestions." }
-              - { label: Privacy enhanced mode, name: privacy_mode, widget: boolean, default: true, hint: "Plays videos from youtube-nocookie.com, so YouTube stores less about visitors. Recommended." }
+              - {
+                  label: Hover previews,
+                  name: hover_previews,
+                  widget: boolean,
+                  default: true,
+                  hint: "Play a few silent seconds when someone points at a video card. Only for visitors who allow videos in Cookie settings, and never on phones.",
+                }
+              - {
+                  label: Preview length (seconds),
+                  name: preview_seconds,
+                  widget: number,
+                  value_type: int,
+                  min: 2,
+                  max: 15,
+                  default: 6,
+                }
+              - {
+                  label: Hide YouTube's suggested videos,
+                  name: hide_suggestions,
+                  widget: boolean,
+                  default: true,
+                  hint: "When a video ends or is paused, cover YouTube's suggested videos with a CryoChain screen. Previews always stop before the end, so they never show suggestions.",
+                }
+              - {
+                  label: Privacy enhanced mode,
+                  name: privacy_mode,
+                  widget: boolean,
+                  default: true,
+                  hint: "Plays videos from youtube-nocookie.com, so YouTube stores less about visitors. Recommended.",
+                }
