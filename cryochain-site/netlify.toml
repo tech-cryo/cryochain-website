@@ -1,0 +1,37 @@
+# Netlify runs this after every change saved in the admin
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "22"
+  SITE_URL = "https://www.cryochain.co"
+
+# keep the admin and the investor page out of search engines
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+[[headers]]
+  for = "/investors.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# long caching for images and styles, short for pages so new articles show quickly
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
+
+# the 15 minute publishing check reads this, so it must never be cached
+[[headers]]
+  for = "/scheduled.json"
+  [headers.values]
+    Cache-Control = "no-cache, no-store"

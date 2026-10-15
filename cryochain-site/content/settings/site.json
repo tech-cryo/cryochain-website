@@ -1,0 +1,13 @@
+{
+  "analytics": {
+    "enabled": true,
+    "measurement_id": "",
+    "track_events": true
+  },
+  "video": {
+    "hover_previews": true,
+    "preview_seconds": 6,
+    "hide_suggestions": true,
+    "privacy_mode": true
+  }
+}

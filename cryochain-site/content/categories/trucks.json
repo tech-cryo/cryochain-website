@@ -1,0 +1,7 @@
+{
+  "name": "Cold trucks",
+  "slug": "trucks",
+  "description": "Booking and using refrigerated trucks.",
+  "color": "teal",
+  "order": 3
+}

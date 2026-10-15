@@ -1,0 +1,11 @@
+/* light CryoChain touches on the admin screens */
+:root{--cc-blue:#1873B4;--cc-green:#6BA832;--cc-navy:#0A2E4D}
+.cc-focal{font-family:Arial,sans-serif}
+.cc-focal-frame{position:relative;display:inline-block;max-width:100%;cursor:crosshair;border-radius:10px;overflow:hidden;border:2px solid #d3e2ea}
+.cc-focal-frame img{display:block;max-width:100%;max-height:360px}
+.cc-focal-dot{position:absolute;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;border:3px solid #fff;background:rgba(107,168,50,.85);box-shadow:0 0 0 2px var(--cc-navy);pointer-events:none}
+.cc-focal-help{font-size:13px;color:#47617A;margin:8px 0}
+.cc-focal-crops{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+.cc-focal-crops figure{margin:0;font-size:12px;color:#47617A}
+.cc-focal-crops div{background-size:cover;border-radius:8px;border:1px solid #d3e2ea}
+.cc-focal-empty{padding:14px;border:2px dashed #8FB4CC;border-radius:10px;color:#47617A;font-size:14px}

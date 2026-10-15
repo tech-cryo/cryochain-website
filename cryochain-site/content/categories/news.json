@@ -1,0 +1,7 @@
+{
+  "name": "Company news",
+  "slug": "news",
+  "description": "Updates from CryoChain.",
+  "color": "purple",
+  "order": 5
+}
