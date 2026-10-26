@@ -1,5 +1,5 @@
 ---
-title: The CryoChain app launches November 1, 2026
+title: The CryoChain app launches November 1, 2027
 slug: app-launch
 date: 2026-10-10 09:00
 timezone: Africa/Accra
