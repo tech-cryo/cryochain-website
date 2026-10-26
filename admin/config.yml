@@ -1,7 +1,7 @@
 # CryoChain Insights admin. See ADMIN_SETUP.md for the one time setup.
 backend:
   name: github
-  repo: tech-cryo/cryochain # change to your GitHub account and repository name
+  repo: tech-cryo/cryochain-website # change to your GitHub account and repository name
   branch: main
   commit_messages:
     create: "Insights: add {{collection}} {{slug}}"
