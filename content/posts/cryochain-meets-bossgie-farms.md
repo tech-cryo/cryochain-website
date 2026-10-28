@@ -44,6 +44,8 @@ These challenges affect farmers’ earnings, limit their business opportunities 
 
 At CryoChain, we believe farmers deserve better support beyond the point of harvest. They need access to the infrastructure and markets that can help them protect their produce and earn more from their hard work.
 
+![Cryochain shares vision with farmers](/images/uploads/img_7528-2-.jpg "Our vision through support")
+
 ## What CryoChain Is Building
 
 During our meeting with BOSSGIE LTD FARMS, we shared our vision of building a network of cold chain hubs, cold storage facilities and refrigerated trucks across Ghana.
@@ -56,7 +58,9 @@ We also want to help farmers access more reliable markets by connecting the peop
 
 By improving how food moves from farms to markets, we aim to reduce post-harvest losses, create better opportunities for farmers and make fresh food available for longer.
 
-## Putting Farmers at the Centre
+![Farmers at the center](/images/uploads/img_7558-1-.jpg "Helping solve farmers issues")
+
+## Putting Farmers at the Center
 
 Farmers are at the heart of everything we are building. That is why conversations with farming communities are important to us.
 
