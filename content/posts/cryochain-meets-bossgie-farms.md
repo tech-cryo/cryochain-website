@@ -15,7 +15,7 @@ tags:
 excerpt: CryoChain met with BOSSGIE LTD FARMS to share our vision for supporting
   farmers through cold storage, refrigerated transportation and better market
   access, helping reduce food waste and strengthen Ghana’s agricultural sector.
-image: /images/uploads/img_7574-1-.jpg
+image: /images/uploads/img_7396.jpg
 focus: 50,50
 image_alt: CryoChain meet with BOSSGIE LTD FARMS
 video:
@@ -44,7 +44,7 @@ These challenges affect farmers’ earnings, limit their business opportunities 
 
 At CryoChain, we believe farmers deserve better support beyond the point of harvest. They need access to the infrastructure and markets that can help them protect their produce and earn more from their hard work.
 
-![Cryochain shares vision with farmers](/images/uploads/img_7528-2-.jpg "Our vision through support")
+![Cryochain shares vision with farmers](/images/uploads/img_7378.jpg "Our vision through support")
 
 ## What CryoChain Is Building
 
@@ -58,7 +58,7 @@ We also want to help farmers access more reliable markets by connecting the peop
 
 By improving how food moves from farms to markets, we aim to reduce post-harvest losses, create better opportunities for farmers and make fresh food available for longer.
 
-![Farmers at the center](/images/uploads/img_7558-1-.jpg "Helping solve farmers issues")
+![Farmers at the center](/images/uploads/img_7466.jpg "Helping solve farmers issues")
 
 ## Putting Farmers at the Center
 
