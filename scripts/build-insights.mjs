@@ -7,7 +7,7 @@
 // 5. Writes the RSS feed and the sitemap
 // Publish times are clock times in the article's time zone (or the default in Insights settings).
 // Articles with a future publish time stay hidden; scheduled.json lists those times so the
-// 15 minute check on Netlify can rebuild the site when one is due.
+// 15 minute check on GitHub Actions can rebuild the site when one is due.
 
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -20,8 +20,8 @@ const ROOT = process.cwd();
 const OUT = path.join(ROOT, "dist");
 const SITE = (process.env.SITE_URL || "https://www.cryochain.co").replace(/\/$/, "");
 const NOW = new Date();
-const SKIP = new Set(["dist", "netlify", "node_modules", "content", "scripts", ".git", ".github", ".netlify",
-  "package.json", "package-lock.json", "netlify.toml", "insights-post-template.html"]);
+const SKIP = new Set(["dist", "api", "node_modules", "content", "scripts", ".git", ".github", ".vercel",
+  "package.json", "package-lock.json", "vercel.json", "insights-post-template.html"]);
 
 const esc = (s = "") => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const exists = (p) => fs.access(p).then(() => true, () => false);

@@ -1,0 +1,18 @@
+# Every 15 minutes: if a scheduled article is due, ask Vercel to rebuild so it goes live.
+# Needs the repository secret VERCEL_DEPLOY_HOOK (Vercel project, Settings, Git, Deploy Hooks).
+name: Publish scheduled articles
+on:
+  schedule: [{ cron: "*/15 * * * *" }]
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK }}
+        run: |
+          [ -n "$HOOK" ] || { echo "VERCEL_DEPLOY_HOOK is not set"; exit 1; }
+          due=$(curl -fsS "https://www.cryochain.co/scheduled.json?t=$(date +%s)" \
+            | jq --argjson now "$(date +%s)" '[.next[]? | select(sub("\\.[0-9]+Z$";"Z") | fromdateiso8601 <= $now)] | length')
+          echo "$due article(s) due"
+          [ "$due" -gt 0 ] && curl -fsS -X POST "$HOOK" || true
