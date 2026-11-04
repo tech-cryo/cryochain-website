@@ -1,7 +1,7 @@
 ---
 title: Raising a New Generation of Agricultural Gurus Through Skills
   Development, Innovation and Youth Empowerment
-slug: youth-agricultural-empowerment
+slug: raising-a-new-generation-of-agricultural-gurus
 date: 2026-11-03 23:03
 category: news
 author: cryochain-team
