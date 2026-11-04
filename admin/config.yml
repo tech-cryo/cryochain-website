@@ -1,7 +1,7 @@
 # CryoChain Insights admin. See ADMIN_SETUP.md for the one time setup.
 backend:
   name: github
-  repo: tech-cryo/cryochain-website
+  repo: CryoChain-Inc/Pushing-to-Vercel-
   base_url: https://www.cryochain.co
   auth_endpoint: api/auth
   branch: main
