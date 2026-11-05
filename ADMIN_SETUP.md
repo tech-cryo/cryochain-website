@@ -5,7 +5,7 @@ publishing Insights articles. Nobody needs to touch the website code to post an
 article.
 
 How it works, in one line: you write in the admin, the admin saves the article
-to your GitHub account, and Netlify (the web host) rebuilds the site within a
+to your GitHub account, and Vercel (the web host) rebuilds the site within a
 minute or two. The build crops the photos, makes the article page, and updates
 the Insights page and the home page.
 
@@ -14,7 +14,7 @@ the Insights page and the home page.
 ## Part 1. One time setup (about 45 minutes)
 
 You need two free accounts: **GitHub** (stores the site and the articles) and
-**Netlify** (hosts the site). Netlify's free plan is enough to start.
+**Vercel** (hosts the site). Vercel's free Hobby plan is enough to start.
 
 ### 1. Put the site on GitHub
 
@@ -27,14 +27,13 @@ You need two free accounts: **GitHub** (stores the site and the articles) and
 3. Open `admin/config.yml` in GitHub, click the pencil, and change this line to
    your account and repository name: `repo: YOUR-GITHUB-ACCOUNT/cryochain-site`
 
-### 2. Host it on Netlify
+### 2. Host it on Vercel
 
-1. Sign in to netlify.com with your GitHub account.
-2. Choose **Add new site**, then **Import an existing project**, then GitHub,
-   then `cryochain-site`.
-3. Netlify reads the build settings from `netlify.toml` by itself. Click
-   **Deploy**.
-4. Add your domain under **Domain management** and follow Netlify's steps to
+1. Sign in to vercel.com with your GitHub account.
+2. Choose **Add New**, then **Project**, import `cryochain-website`, and set
+   **Production Branch** to `main` under Settings, Git.
+3. Vercel reads the build settings from `vercel.json`. Click **Deploy**.
+4. Add your domain under **Settings**, **Domains** and follow Vercel's steps to
    point cryochain.co at it.
 
 ### 2b. Activate the form emails
@@ -51,10 +50,10 @@ WhatsApp.
 1. In GitHub, go to **Settings**, **Developer settings**, **OAuth Apps**, **New
    OAuth App**.
    - Homepage URL: `https://www.cryochain.co`
-   - Authorization callback URL: `https://api.netlify.com/auth/done`
+   - Authorization callback URL: `https://www.cryochain.co/api/callback`
 2. Copy the **Client ID**, and create and copy a **Client secret**.
-3. In Netlify, open your site, find the **OAuth** section under access control,
-   choose **Install provider**, pick **GitHub**, and paste both values.
+3. In Vercel, open **Settings**, **Environment Variables** and add
+   `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`. Redeploy once.
 4. Go to cryochain.co/admin and click **Login with GitHub**.
 
 ### 4. Give your team access
@@ -65,16 +64,15 @@ then log in at cryochain.co/admin.
 
 ### 5. Publish scheduled articles on time
 
-1. In Netlify, open **Build hooks** in the build settings, add a hook called
-   `Scheduled publish`, and copy its link.
-2. In Netlify, open **Environment variables**, add a variable named
-   `NETLIFY_BUILD_HOOK`, paste the link as its value, and redeploy once.
+1. In Vercel, open **Settings**, **Git**, **Deploy Hooks**, create a hook called
+   `Scheduled publish` for the `main` branch, and copy its link.
+2. In GitHub, open the repository **Settings**, **Secrets and variables**,
+   **Actions**, and add a secret named `VERCEL_DEPLOY_HOOK` with the link.
 
-A small check on Netlify now runs every 15 minutes. When a scheduled article's
-time has passed, it rebuilds the site, so the article goes live within about 15
-minutes of the time you set. It only rebuilds when something is due, so it does
-not use up build minutes. You can see it under **Functions**,
-`publish-scheduled`, in Netlify.
+A check on GitHub Actions (`.github/workflows/publish-scheduled.yml`) runs
+every 15 minutes. When a scheduled article's time has passed, it rebuilds the
+site, so the article goes live within about 15 to 20 minutes of the time you
+set. It only rebuilds when something is due.
 
 ---
 
