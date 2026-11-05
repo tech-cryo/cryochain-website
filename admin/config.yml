@@ -2,7 +2,6 @@
 backend:
   name: github
   repo: tech-cryochain/cryochain-website
-  base_url: https://www.cryochain.co
   auth_endpoint: api/auth
   branch: main
   commit_messages:
