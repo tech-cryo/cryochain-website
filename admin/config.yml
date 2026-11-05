@@ -1,7 +1,7 @@
 # CryoChain Insights admin. See ADMIN_SETUP.md for the one time setup.
 backend:
   name: github
-  repo: tech-cryochain/cryochain-website
+  repo: tech-cryo/cryochain-website
   base_url: https://test.cryochain.co
   auth_endpoint: api/auth
   branch: main
